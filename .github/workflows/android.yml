@@ -1,0 +1,40 @@
+name: Android CI
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+    - name: Build debug APK
+      run: ./gradlew assembleDebug
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug.apk
+        path: app/build/outputs/apk/debug/app-debug.apk
+        retention-days: 14
+    - name: Publish latest release (direct APK download)
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release delete latest --yes --cleanup-tag || true
+        gh release create latest app/build/outputs/apk/debug/app-debug.apk \
+          --title "车机文件管理 latest" \
+          --notes "GitHub Actions 自动构建的最新 debug 安装包。
+
+手机/车机直接下载：https://github.com/${{ github.repository }}/releases/download/latest/app-debug.apk" || true
