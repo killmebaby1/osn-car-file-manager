@@ -5,6 +5,9 @@ on:
     branches: [master, main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
 
@@ -35,4 +38,4 @@ jobs:
         gh release delete latest --yes --cleanup-tag || true
         gh release create latest app/build/outputs/apk/debug/app-debug.apk \
           --title "车机文件管理 latest" \
-          --notes "GitHub Actions 自动构建的最新 debug 安装包。下载地址：https://github.com/${{ github.repository }}/releases/download/latest/app-debug.apk" || true
+          --notes "GitHub Actions 自动构建的最新 debug 安装包。下载地址：https://github.com/${{ github.repository }}/releases/download/latest/app-debug.apk"
