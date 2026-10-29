@@ -27,7 +27,7 @@ class FtpServerUrlPreference : Preference {
     private val observer = Observer<Any> { updateUrl() }
     private val receiver = FtpServerUrl.createChangeReceiver(context) { updateUrl() }
 
-    private var url: String? = null
+    private var urls: List<String> = emptyList()
 
     constructor(context: Context) : super(context)
 
@@ -68,8 +68,16 @@ class FtpServerUrlPreference : Preference {
     }
 
     private fun updateUrl() {
-        url = FtpServerUrl.getUrl()
-        summary = url ?: context.getString(R.string.ftp_server_url_summary_no_local_inet_address)
+        urls = FtpServerUrl.getUrls()
+        summary = if (urls.isEmpty()) {
+            context.getString(R.string.ftp_server_url_summary_no_local_inet_address)
+        } else if (urls.size == 1) {
+            urls[0]
+        } else {
+            urls.joinToString("\n")
+                .plus("\n\n")
+                .plus(context.getString(R.string.ftp_server_url_summary_multiple_hint))
+        }
     }
 
     override fun onBindViewHolder(holder: PreferenceViewHolder) {
@@ -81,14 +89,18 @@ class FtpServerUrlPreference : Preference {
                 view: View,
                 menuInfo: ContextMenuInfo?
             ) {
-                val url = url ?: return
+                val urls = urls
+                if (urls.isEmpty()) {
+                    return
+                }
                 menu.apply {
-                    setHeaderTitle(url)
-                    add(Menu.NONE, Menu.NONE, Menu.NONE, R.string.ftp_server_url_menu_copy_url)
-                        .setOnMenuItemClickListener {
+                    setHeaderTitle(R.string.ftp_server_url_menu_copy_url_header)
+                    for (url in urls) {
+                        add(Menu.NONE, Menu.NONE, Menu.NONE, url).setOnMenuItemClickListener {
                             clipboardManager.copyText(url, context)
                             true
                         }
+                    }
                     if (!Settings.FTP_SERVER_ANONYMOUS_LOGIN.valueCompat) {
                         val password = Settings.FTP_SERVER_PASSWORD.valueCompat
                         if (password.isNotEmpty()) {
