@@ -194,6 +194,11 @@ object Settings {
     val CAR_DOCK_OFFSET: SettingLiveData<Int> =
         IntegerSettingLiveData(R.string.pref_key_car_dock_offset, R.integer.pref_default_value_car_dock_offset)
 
+    val CAR_FONT_SCALE: SettingLiveData<Int> =
+        IntegerSettingLiveData(
+            R.string.pref_key_car_font_scale, R.integer.pref_default_value_car_font_scale
+        )
+
     val CAR_ROM_DIRECTORY: SettingLiveData<Path> =
         ParcelValueSettingLiveData(
             R.string.pref_key_car_rom_directory,

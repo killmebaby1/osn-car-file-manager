@@ -90,5 +90,7 @@
     <bool name="pref_default_value_car_force_fullscreen">true</bool>
     <string name="pref_key_car_dock_offset">key_car_dock_offset</string>
     <integer name="pref_default_value_car_dock_offset">0</integer>
+    <string name="pref_key_car_font_scale">key_car_font_scale</string>
+    <integer name="pref_default_value_car_font_scale">150</integer>
     <string name="pref_key_car_rom_directory">key_car_rom_directory</string>
 </resources>

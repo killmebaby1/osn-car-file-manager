@@ -33,6 +33,16 @@
             app:showSeekBarValue="true"
             android:dependency="@string/pref_key_car_mode" />
 
+        <androidx.preference.SeekBarPreference
+            android:key="@string/pref_key_car_font_scale"
+            android:title="@string/settings_car_font_scale_title"
+            android:summary="@string/settings_car_font_scale_summary"
+            android:defaultValue="@integer/pref_default_value_car_font_scale"
+            app:min="100"
+            android:max="200"
+            app:showSeekBarValue="true"
+            android:dependency="@string/pref_key_car_mode" />
+
         <me.zhanghai.android.files.settings.RomDirectoryPreference
             android:key="@string/pref_key_car_rom_directory"
             android:title="@string/settings_car_rom_directory_title"

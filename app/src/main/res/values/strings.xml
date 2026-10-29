@@ -775,6 +775,8 @@
     <string name="settings_car_force_fullscreen_summary">隐藏状态栏和导航栏，全屏沉浸显示</string>
     <string name="settings_car_dock_offset_title">Dock 避让高度</string>
     <string name="settings_car_dock_offset_summary">界面底部向上避开车机 Dock 的高度（dp）</string>
+    <string name="settings_car_font_scale_title">字体大小</string>
+    <string name="settings_car_font_scale_summary">车机模式下的字体放大比例（100%~200%，默认 150%）</string>
     <string name="settings_car_rom_directory_title">街机 ROM 目录</string>
     <string name="settings_car_rom_directory_summary">抽屉中「街机 ROM」快捷入口指向的目录</string>
     <string name="navigation_car_rom_directory">街机 ROM</string>
