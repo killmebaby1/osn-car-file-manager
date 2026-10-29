@@ -726,6 +726,8 @@
     <string name="ftp_server_url_menu_copy_url_header">复制 FTP 地址</string>
     <string name="ftp_server_url_menu_copy_url">Copy URL</string>
     <string name="ftp_server_url_menu_copy_password">Copy password</string>
+    <string name="ftp_server_network_diagnostic_title">网络诊断（所有网卡与路由）</string>
+    <string name="ftp_server_network_diagnostic_copy">复制诊断信息</string>
     <string name="ftp_server_add_tile_title">Add to Quick Settings</string>
     <string name="ftp_server_add_tile_result_added">“FTP server” has been added to Quick Settings</string>
     <string name="ftp_server_add_tile_result_already_added">“FTP server” is already added to Quick Settings</string>

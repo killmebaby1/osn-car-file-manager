@@ -17,6 +17,9 @@
     <me.zhanghai.android.files.ftpserver.FtpServerUrlPreference
         android:title="@string/ftp_server_url_title" />
 
+    <me.zhanghai.android.files.ftpserver.FtpServerNetworkDiagnosticPreference
+        android:title="@string/ftp_server_network_diagnostic_title" />
+
     <me.zhanghai.android.files.ftpserver.FtpServerAddTilePreference
         android:title="@string/ftp_server_add_tile_title"
         app:isPreferenceVisible="@bool/pref_visible_ftp_server_add_tile" />
